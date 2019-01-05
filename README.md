@@ -2,7 +2,9 @@
 .Net code challenges
 
 Challenge 1: Array Max Result
+
 Instructions: Create a Console application that requests 5 numbers between 1-10. Output the array to the console and Ask the user to select a number. After the selection, output the "score" of the number chosen.
+
 Successful output: 
 
 Challenge 2: Leap Year Calculator
