@@ -28,7 +28,7 @@ namespace prework
                 fiveNumbersArray[i] = integer;
         }
 
-            ////to compile array and display on screen
+            //to compile array and display on screen
             for (int i = 0; i < fiveNumbersArray.Length; i++)
             {
                 Console.Write($"{fiveNumbersArray[i]},");
@@ -44,7 +44,7 @@ namespace prework
             Console.WriteLine($"Your score is: { maxResult}");
             Console.ReadLine();
 
-            ////CHALLENGE2
+            //CHALLENGE2
             Console.WriteLine("Enter a year to see if it's a Leap Year: ");
             string year = Console.ReadLine();
             int testYear = Convert.ToInt32(year);
@@ -69,6 +69,17 @@ namespace prework
 
             PerfectSequence(threeNumbersArray);
 
+            //CHALLENGE4
+            //prompt user to enter length
+            Console.WriteLine("Enter the length for a multidimensional array: ");
+            string length = Console.ReadLine();
+            //convert string into an integer
+            int arrayLength = Convert.ToInt32(length);
+
+            Console.WriteLine("Enter the width for a multidimensional array: ");
+            string width = Console.ReadLine();
+            int arrayWidth = Convert.ToInt32(width);
+            SumofRows(arrayLength, arrayWidth);
         }
 
         static int MaxArrayResult(int[] fiveNumbersArray, int chosenNumber)
@@ -117,7 +128,7 @@ namespace prework
             //perfect sequence if the sum equal to the product
             if (sum == product)
             {
-                Console.WriteLine($"Yes, perfect sequence");
+                Console.WriteLine("Yes, perfect sequence");
             }
             else
             {
@@ -125,7 +136,34 @@ namespace prework
             }
             Console.ReadLine();
         }
-    }
 
+        static void SumofRows(int arrayLength, int arrayWidth)
+        {
+            //set up jagged array with input from the user
+            int[,] myArray = new int[arrayLength, arrayWidth];
+            //randomize numbers to populate the arrays
+            Random rnd = new Random();
+            //loop through the arrays inside of the main array and populates each index
+            for (int i = 0; i < arrayLength; i++)
+            {
+                for (int j = 0; j < arrayWidth; j++)
+                {
+                    myArray[i, j] = rnd.Next(1, 100);
+                }
+            }
+
+            //set up single dimensional array that contains the sum for each row
+            int[] arraySum = new int[myArray.GetLength(0)];
+            for (int i = 0; i < arrayLength; i++)
+            {
+                for (int j = 0; j < arrayWidth; j++)
+                {
+                    arraySum[i] += myArray[i, j];
+                }
+            }
+            Console.WriteLine($"The sume of rows is [{string.Join(",", arraySum)}]");
+        }
+    }
+   
 
 }
